@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { useSession, signOut } from "next-auth/client";
+import { useSession, signOut } from "next-auth/react";
 
 import classes from "./MainNavigation.module.css";
 
 function MainNavigation() {
   // obtain session info to determine which links to display in nav bar
-  const [session, loading] = useSession();
+  const { data: session, status } = useSession()
+  const loading = status === "loading"
 
   // Sign user out if "Logout" button is clicked
   function logoutHandler() {

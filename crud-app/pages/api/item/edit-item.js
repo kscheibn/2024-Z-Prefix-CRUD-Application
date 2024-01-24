@@ -1,5 +1,5 @@
 // /api/user/edit-item
-import { getSession } from "next-auth/client";
+import { getServerSession } from "next-auth";
 import { connectToDatabase } from "../../../lib/db";
 import { ObjectId } from "bson";
 
@@ -10,7 +10,9 @@ async function handler(req, res) {
   }
 
   // only proceed if authenticated (i.e. session exists)
-  const session = await getSession({ req: req });
+  // const session = await getSession({ req: req });
+  const session = await getServerSession(req, res);
+  console.log(session);
 
   if (!session) {
     res
@@ -41,7 +43,10 @@ async function handler(req, res) {
   }
 
   if (!newTitle || !newDescription || !newQuantity) {
-    res.status(401).json({ message: "Could not update item. Please include valid Title, Description, and Quanitity" });
+    res.status(401).json({
+      message:
+        "Could not update item. Please include valid Title, Description, and Quanitity",
+    });
     client.close();
     return;
   }

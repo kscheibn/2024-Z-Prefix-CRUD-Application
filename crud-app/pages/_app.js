@@ -1,11 +1,11 @@
-import { Provider } from "next-auth/client";
+import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
 import Layout from "../components/layout/Layout";
 import "../styles/globals.css";
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <Provider session={pageProps.session}>
+    <SessionProvider session={session}>
       <Head>
         <title>Item Catalog</title>
         <meta name="description" content="CRUD Application" />
@@ -15,7 +15,7 @@ function App({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </Provider>
+    </SessionProvider>
   );
 }
 

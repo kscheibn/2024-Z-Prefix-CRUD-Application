@@ -35,6 +35,7 @@ async function editItem(itemId, newTitle, newDescription, newQuantity) {
   }
 }
 
+
 function ItemDetailForm(props) {
   // isEditing is a flag to show whether form is in "Edit" or "Read Only" mode
   const [isEditing, setIsEditing] = useState(false);

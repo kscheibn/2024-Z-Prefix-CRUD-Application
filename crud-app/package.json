@@ -13,8 +13,8 @@
     "bson": "^6.2.0",
     "mongodb": "^3.7.4",
     "next": "14.1.0",
-    "next-auth": "3.29.10",
-    "react": "^17",
-    "react-dom": "^17"
+    "next-auth": "^4",
+    "react": "^18",
+    "react-dom": "^18"
   }
 }
